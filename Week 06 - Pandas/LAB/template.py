@@ -33,7 +33,8 @@ df["percent"] = (df["value"] / df["limit"]) * 100
 df["status"] = df["percent"].apply(
     lambda x: "OVER LIMIT" if x >= 100 else "WARNING" if x >= 90 else "OK"
 )
-
+average = df.groupby("status")["percent"].mean().round(1)
+print(average)
 
 
 # ================================================================== OUTPUT
