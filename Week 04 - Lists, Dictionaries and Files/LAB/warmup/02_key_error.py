@@ -1,6 +1,11 @@
-# BROKEN ON PURPOSE.
-# Run it, read the last line, then fix it.
+# Fixed version
 
-record = {"label": "R-001", "value": 87.0, "limit": 100.0}
+record = {
+    "label": "R-001",
+    "value": 87.0,
+    "limit": 100
+}
 
-print(record["status"])
+print(record["label"])
+print(record["value"])
+print(record["limit"])

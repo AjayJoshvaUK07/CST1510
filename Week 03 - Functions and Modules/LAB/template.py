@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :Ajay Joshva
+Lane  :   Cyber 
+Date  :10 th November
 
 Run it:   python template.py
 
@@ -26,7 +26,14 @@ Delete these instructions as you replace them with your code.
 #
 #    Give each function a one-line docstring saying what it does.
 
-# your function(s) go here
+def status_of(percent):
+    """Return the security status based on percentage."""
+    if percent >= 100:
+        return "OVER LIMIT"
+    elif percent >= 90:
+        return "WARNING"
+    else:
+        return "OK"
 
 
 # ==================================================================== INPUT
@@ -36,9 +43,9 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted
-limit = 0.0     # replace with an input() call, converted
+label = input("Enter source IP address: ")
+value = float(input("Enter failed logins: "))
+limit = float(input("Enter total attempts: "))
 
 
 # ================================================================== PROCESS
@@ -48,10 +55,9 @@ limit = 0.0     # replace with an input() call, converted
 #                difference and percentage inline, not in a function.
 #    Typical   : call check() to get the difference and percentage instead.
 
-difference = 0.0   # replace with your code
-percent = 0.0       # replace with your code
-status = ""          # replace with your code
-
+difference = limit - value
+percent = (value / limit) * 100
+status = status_of(percent)
 
 # =================================================================== OUTPUT
 # 4. Print the report.
@@ -69,9 +75,13 @@ print("=" * 34)
 print(f"  RECORD CHECK  -  {label}")
 print("=" * 34)
 
-# your report lines go here
+print(f"Used       : {value:.2f}")
+print(f"Total      : {limit:.2f}")
+print(f"Free       : {difference:.2f}")
+print(f"Percent    : {percent:.2f} %")
+print(f"Status     : {status}")
 
-print("=" * 34)
+
 
 
 # ==========================================================================

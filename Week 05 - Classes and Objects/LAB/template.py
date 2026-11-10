@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :Ajay Joshva
+Lane  :  Cyber
+Date  :10 november 
 
 Run it:   python template.py
 
@@ -23,7 +23,16 @@ Delete these instructions as you replace them with your code.
 #    Excellent : also add over_limit_count as a class-level running total -
 #                see the note below.
 
-# your class goes here
+class Record:
+    def __init__(self, label, value, limit):
+        self.label = label
+        self.value = value
+        self.limit = limit
+
+    def status(self):
+        if self.value >= self.limit * 0.9:
+            return "WARNING"
+        return "OK"
 
 
 # ==================================================================== RECORDS
@@ -35,7 +44,11 @@ Delete these instructions as you replace them with your code.
 #                lines from a file and returns a list of Record objects. Make
 #                your own data file, one record per line.
 
-records = []   # replace with your code
+records = [
+    Record("R-001", 87.0, 100.0),
+    Record("R-002", 120.0, 100.0),
+    Record("R-003", 45.0, 100.0)
+]
 
 
 # ==================================================================== OUTPUT
@@ -55,9 +68,12 @@ for record in records:
     print(f"  RECORD CHECK  -  {record.label}")
     print("=" * 34)
 
-    # your report lines go here
+    print(f"Label : {record.label}")
+    print(f"Value : {record.value}")
+    print(f"Limit : {record.limit}")
+    print(f"Status: {record.status()}")
 
-    print("=" * 34)
+print("=" * 34)
 
 
 # ==========================================================================

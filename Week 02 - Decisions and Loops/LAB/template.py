@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :Ajay Joshva
+Lane  :  Cyber 
+Date  :10 th November
 
 Run it:   python template.py
 
@@ -19,23 +19,33 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted with float()
-limit = 0.0     # replace with an input() call, converted with float()
+label = input("Enter a label: ")
 
+value = float(input("Enter first number: "))
+
+limit = float(input("Enter second number: "))
 
 # ================================================================== PROCESS
 # 2. Work out the difference and the percentage.       [Typical and above]
 
-difference = 0.0   # replace with your calculation
-percent = 0.0       # replace with your calculation
+difference = limit - value
+
+if limit != 0:
+    percent = (value / limit) * 100
+else:
+    percent = None
 # 3. Decide a status and store it in a variable called status.
 #
 #    Threshold : if / else        -> "OVER LIMIT" or "OK"
 #    Typical   : if / elif / else -> "OVER LIMIT" (100% or more),
 #                                     "WARNING" (90% or more), otherwise "OK"
 
-status = ""   # replace with your if / else (or if / elif / else)
+if value > limit:
+    status = "OVER LIMIT"
+elif value >= limit * 0.8:
+    status = "WARNING"
+else:
+    status = "OK"
 
 
 # =================================================================== OUTPUT
@@ -53,9 +63,14 @@ print("=" * 34)
 print(f"  RECORD CHECK  -  {label}")
 print("=" * 34)
 
-# your report lines go here
+print(f"Label      : {label}")
+print(f"First      : {value:>10.2f}")
+print(f"Second     : {limit:>10.2f}")
+print(f"Difference : {difference:+.2f}")
+print(f"Percent    : {percent:.2f}%" if percent is not None else "Percent    : Cannot calculate (total is zero)")
+print(f"Status     : {status}")
 
-print("=" * 34)
+
 
 
 # ==========================================================================

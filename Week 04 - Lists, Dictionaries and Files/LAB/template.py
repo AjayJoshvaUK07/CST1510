@@ -1,10 +1,11 @@
+from pathlib import Path
 """
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :Ajay Joshva
+Lane  : Cyber 
+Date  :10 th November
 
 Run it:   python template.py
 
@@ -19,7 +20,12 @@ Delete these instructions as you replace them with your code.
 #    nothing outside it should contain a print() of its own. Give each a
 #    one-line docstring.
 
-# your function(s) go here
+def check_record(value, limit):
+    """Calculate difference, percentage and status."""
+    difference = value - limit
+    percent = (value / limit) * 100
+    status = "OVER LIMIT" if value > limit else "OK"
+    return difference, percent, status
 
 
 # ====================================================================== STORE
@@ -33,7 +39,25 @@ Delete these instructions as you replace them with your code.
 #    Excellent : also write the results out to a new file (one line per
 #                record: label, status), as well as printing them.
 
-records = []   # replace with your code
+def load_records():
+    records = []
+
+    file_path = Path(__file__).parent / "records_sample.txt"
+    with open(file_path, "r") as f:
+        for line in f:
+            label, value, limit = line.strip().split(",")
+        for line in f:
+            label, value, limit = line.strip().split(",")
+            records.append({
+                "label": label,
+                "value": float(value),
+                "limit": float(limit)
+            })
+
+    return records
+
+
+records = load_records()
 
 
 # =============================================================== PROCESS + OUTPUT
@@ -42,7 +66,19 @@ records = []   # replace with your code
 #    Excellent : also keep a running count of how many were OVER LIMIT, and
 #                print that once, after the loop ends.
 
-# your loop goes here
+total_over = 0
+
+for record in records:
+    difference, percent, status = check_record(
+        record["value"], record["limit"]
+    )
+
+    print(f'{record["label"]}: {status}')
+
+    if status == "OVER LIMIT":
+        total_over += 1
+
+print(f"Total over limit: {total_over}")
 
 
 # ==========================================================================

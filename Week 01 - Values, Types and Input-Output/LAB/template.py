@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Ajay Joshva
+Lane  :  Cyber 
+Date  :10 November
 
 Run it:   python template.py
 
@@ -21,9 +21,9 @@ Delete these instructions as you replace them with your code.
 #
 #    Remember: input() always gives back text.
 
-label = ""      # : replace with an input() call
-first = 0.0     # : replace with an input() call, converted
-second = 0.0    # : replace with an input() call, converted
+label  = input("Enter label: ")
+first = float(input("Enter first number: "))
+second = float(input("Enter second number: "))
 
 
 # ================================================================== PROCESS
@@ -34,8 +34,11 @@ second = 0.0    # : replace with an input() call, converted
 #
 #    Do not type the answers. Calculate them.
 
-difference = 0.0   # 
-percent = 0.0      # 
+difference = second - first
+if second != 0:
+    percent = (first / second) * 100
+else:
+    percent = None
 
 
 # =================================================================== OUTPUT
@@ -47,14 +50,18 @@ percent = 0.0      #
 #
 #    Useful:   f"{value:>10.2f}"    right-aligned, 2 decimal places
 #              f"{value:>+10.2f}"   the same, but always shows the sign
+print(f"Label      : {label}")
+print(f"First      : {first:>10.2f}")
+print(f"Second     : {second:>10.2f}")
+print(f"Difference : {difference:+.2f}")
+if percent is not None:
+     print(f"Percent    : {percent:.2f}%")
+else:
+     print("percent.     : Cannot calculate (total is zero)")    
 
 print()
 print("=" * 34)
 print(f"  RECORD CHECK  -  {label}")
-print("=" * 34)
-
-# : your report lines go here
-
 print("=" * 34)
 
 
